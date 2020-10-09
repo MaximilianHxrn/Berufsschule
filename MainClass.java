@@ -3,16 +3,28 @@ public class MainClass {
     private static StringBuilder SB = new StringBuilder();
 
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-        for (int i = 0; i < 1000; i++) {
-            SB.append("leer");
+        Text t = new Text();
+        t.print();
+    }
+
+    @SuppressWarnings("unused")
+    private static void time() {
+        long appendTimeAvg = 0L;
+        long deleteTimeAvg = 0L;
+        long substringTimeAvg = 0L;
+        for (int k = 0; k < 1000; k++) {
+            long startTime = System.nanoTime();
+            SB.append("Max");
+            appendTimeAvg = (System.nanoTime() - startTime);
+            startTime = System.nanoTime();
+            SB.deleteCharAt(k).toString();
+            deleteTimeAvg = (System.nanoTime() - startTime);
+            startTime = System.nanoTime();
+            SB.substring(0, k);
+            substringTimeAvg = (System.nanoTime() - startTime);
         }
-        System.out.println("Hinzufügen: " + (System.nanoTime() - startTime) / 1000 + " Nanosekunden.");
-        startTime = System.nanoTime();
-        for (int i = 0; i < 1000; i++) {
-            SB.deleteCharAt(i);
-        }
-        System.out.println("Hinzufügen: " + (System.nanoTime() - startTime) / 1000 + " Nanosekunden.");
+        System.out.println(
+                "Append: " + appendTimeAvg + "\nDelete: " + deleteTimeAvg + "\nSubString: " + substringTimeAvg);
     }
 
     @SuppressWarnings("unused")
