@@ -5,6 +5,7 @@ public class Text {
 
     public Text() {
         characters = new ArrayList<Wort>();
+        initWoerter();
     }
 
     public void initWoerter() {
@@ -18,7 +19,7 @@ public class Text {
 
     public void print() {
         for (Wort c : characters) {
-            System.out.println(c.toString() + " ");
+            System.out.print(c.toString() + " ");
         }
     }
 }

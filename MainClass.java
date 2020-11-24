@@ -3,7 +3,7 @@ public class MainClass {
     private static StringBuilder SB = new StringBuilder();
 
     public static void main(String[] args) {
-        Text t = new Text();
+        Text t = new TextBesser();
         t.print();
     }
 
