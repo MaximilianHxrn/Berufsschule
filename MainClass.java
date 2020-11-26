@@ -1,25 +1,26 @@
 import java.security.SecureRandom;
+import java.util.Collections;
 
 public class MainClass {
 
     // private static StringBuilder SB = new StringBuilder();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         GenericStack<String> g = new GenericStack<>();
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         SecureRandom r = new SecureRandom();
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < 5; i++) {
             g.push(Character.toString(alphabet.charAt(r.nextInt(alphabet.length()))));
         }
-        for (int i = 0; i < 100; i++) {
-            if (r.nextBoolean()) {
-                g.push(Character.toString(alphabet.charAt(r.nextInt(alphabet.length()))));
-            } else {
-                g.pop();
-            }
-            System.out.println(g.toString());
-        }
+        System.out.println(g.toString());
+        g.reverseStack();
+        System.out.println(g.toString());
     }
+    /*
+     * for (int i = 0; i < 100; i++) { if (r.nextBoolean()) {
+     * g.push(Character.toString(alphabet.charAt(r.nextInt(alphabet.length())))); }
+     * else { g.pop(); } System.out.println(g.toString()); }
+     */
     /*
      * 
      * @SuppressWarnings("unused") private static void time() { long appendTimeAvg =

@@ -1,6 +1,7 @@
 public class Entry<T> {
     T element;
     private Entry<T> next;
+    int index;
 
     Entry(T element, Entry<T> next) {
         this.element = element;
@@ -13,5 +14,9 @@ public class Entry<T> {
 
     Entry<T> getEntry() {
         return this;
+    }
+
+    void setNext(Entry<T> next) {
+        this.next = next;
     }
 }
