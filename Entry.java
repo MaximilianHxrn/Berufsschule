@@ -14,4 +14,12 @@ public class Entry<T> {
     Entry<T> getEntry() {
         return this;
     }
+
+    void setNext(Entry<T> next) {
+        this.next = next;
+    }
+
+    public String toString() {
+        return element.toString();
+    }
 }
