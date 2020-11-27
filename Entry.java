@@ -19,4 +19,8 @@ public class Entry<T> {
     void setNext(Entry<T> next) {
         this.next = next;
     }
+
+    public String toString() {
+        return element.toString();
+    }
 }
