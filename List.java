@@ -24,19 +24,25 @@ public class List<T> {
 
     void push(T element) {
         if (head == null) {
-            head = new Entry<T>(element, null);
-            tail = head;
+            this.head = new Entry<T>(element, null);
+            this.tail = this.head;
         } else {
             Entry<T> new_node = new Entry<T>(element, null);
-            head.setNext(new_node);
-            head = new_node;
+            this.head.setNext(new_node);
+            this.head = new_node;
         }
         length++;
     }
 
     T pop() {
         T temp = null;
-        Entry<T> node = tail;
+        if (head == tail) {
+            temp = this.head.element;
+            this.head = null;
+            this.tail = null;
+            return temp;
+        }
+        Entry<T> node = this.tail;
         for (int i = 0; i < length - 2; i++) {
             node = node.getNext();
         }
@@ -46,15 +52,19 @@ public class List<T> {
         temp = node.element;
         node = null;
         length--;
-        head = previous;
+        this.head = previous;
         return temp;
     }
 
     Entry<T> get(int index) {
-        if (index == 0) {
-            return tail;
+        if (index >= length) {
+            System.out.println("Index > Listenlänge");
+            return null;
         }
-        Entry<T> node = tail;
+        if (index == 0) {
+            return this.tail;
+        }
+        Entry<T> node = this.tail;
         for (int i = 0; i < index; i++) {
             node = node.getNext();
         }
@@ -62,11 +72,15 @@ public class List<T> {
     }
 
     T pop(int index) throws Exception {
+        if (index >= length) {
+            System.out.println("Index > Listenlänge");
+            return null;
+        }
         T temp;
-        Entry<T> node = tail;
+        Entry<T> node = this.tail;
         if (index == 0) {
-            temp = tail.element;
-            tail = tail.getNext();
+            temp = this.tail.element;
+            this.tail = this.tail.getNext();
             return temp;
         }
         for (int i = 0; i < index - 1; i++) {
@@ -87,6 +101,9 @@ public class List<T> {
         if (this.name != null) {
             sb.append(this.name + " ");
         }
+        if (this.tail == null) {
+            return "";
+        }
         Entry<T> currNode = this.tail;
         while (currNode != null) {
             sb.append(currNode.element + " -> ");
@@ -99,8 +116,11 @@ public class List<T> {
     }
 
     void push_front(T element) {
-        Entry<T> temp = new Entry<>(element, tail);
-        tail = temp;
+        Entry<T> temp = new Entry<>(element, this.tail);
+        this.tail = temp;
+        if (this.head == null) {
+            this.head = this.tail;
+        }
         length++;
     }
 
@@ -113,7 +133,7 @@ public class List<T> {
     }
 
     T last() {
-        return head.element;
+        return this.head.element;
     }
 
     void concat(List<T> list) {
@@ -156,5 +176,89 @@ public class List<T> {
             }
         }
         return size;
+    }
+
+    void push(T element, int index) {
+        if (index == 0) {
+            push_front(element);
+        }
+        Entry<T> node = this.tail;
+        for (int i = 0; i < index - 1; i++) {
+            node = node.getNext();
+        }
+        Entry<T> previous = node;
+        node = node.getNext();
+        previous.setNext(new Entry<T>(element, node));
+        length++;
+    }
+
+    void clear() throws Exception {
+        while (this.head != null) {
+            this.pop();
+        }
+    }
+
+    boolean contains(T element) {
+        for (int i = 0; i < this.length; i++) {
+            if (this.get(i).element.equals(element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void removeIf(boolean bool) {
+        if (bool) {
+            this.pop();
+        }
+    }
+
+    void removeIf(boolean bool, int index) throws Exception {
+        if (bool) {
+            this.pop(index);
+        }
+    }
+
+    void pushIf(boolean bool, T element) {
+        if (bool) {
+            push(element);
+        }
+    }
+
+    void pushFrontIf(boolean bool, T element) {
+        if (bool) {
+            push_front(element);
+        }
+    }
+
+    void pushAtIf(boolean bool, T element, int index) {
+        if (bool) {
+            push(element, index);
+        }
+    }
+
+    List<T> subList(int start, int end) {
+        List<T> temp = new List<T>();
+        for (int i = start; i < end; i++) {
+            temp.push(this.get(i).element);
+        }
+        return temp;
+    }
+
+    List<T> subList(int start) {
+        List<T> temp = new List<T>();
+        for (int i = start; i < this.length; i++) {
+            temp.push(this.get(i).element);
+        }
+        return temp;
+    }
+
+    T[] toArray() {
+        @SuppressWarnings("unchecked")
+        T[] temp = (T[]) new Object[this.length];
+        for (int i = 0; i < this.length; i++) {
+            temp[i] = this.get(i).element;
+        }
+        return temp;
     }
 }

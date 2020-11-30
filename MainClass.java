@@ -7,8 +7,6 @@ public class MainClass {
             list.push("Max " + i);
         }
 
-        System.out.println(list.get(1).toString());
-
         System.out.println("List: " + list.toString() + "\n");
 
         list.push("new");
