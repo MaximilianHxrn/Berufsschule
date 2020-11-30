@@ -89,6 +89,7 @@ public class List<T> {
     void push_front(T element) {
         Entry<T> temp = new Entry<>(element, tail);
         tail = temp;
+        length++;
     }
 
     List<T> reverseList() throws Exception {
