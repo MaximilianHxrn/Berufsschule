@@ -8,6 +8,15 @@ public class List<T> {
     Entry<T> head;
     Entry<T> tail;
     int length;
+    String name;
+
+    List() {
+        name = null;
+    }
+
+    List(String name) {
+        this.name = name;
+    }
 
     void add(T element) {
         push(element);
@@ -75,6 +84,9 @@ public class List<T> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        if (this.name != null) {
+            sb.append(this.name + " ");
+        }
         Entry<T> currNode = this.tail;
         while (currNode != null) {
             sb.append(currNode.element + " -> ");
@@ -94,7 +106,7 @@ public class List<T> {
 
     List<T> reverseList() throws Exception {
         List<T> temp = new List<>();
-        for (int i = this.length - 1; i >= 0; i--) {
+        for (int i = this.length - 2; i >= 0; i--) {
             temp.push(this.get(i).element);
         }
         return temp;
