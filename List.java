@@ -31,7 +31,7 @@ public class List<T> {
             this.head.setNext(new_node);
             this.head = new_node;
         }
-        length++;
+        this.length++;
     }
 
     T pop() {
@@ -51,7 +51,7 @@ public class List<T> {
         previous.setNext(null);
         temp = node.element;
         node = null;
-        length--;
+        this.length--;
         this.head = previous;
         return temp;
     }
@@ -91,7 +91,7 @@ public class List<T> {
         previous.setNext(node.getNext());
         temp = node.element;
         node = null;
-        length--;
+        this.length--;
         return temp;
     }
 
@@ -121,7 +121,7 @@ public class List<T> {
         if (this.head == null) {
             this.head = this.tail;
         }
-        length++;
+        this.length++;
     }
 
     List<T> reverseList() throws Exception {
@@ -189,7 +189,7 @@ public class List<T> {
         Entry<T> previous = node;
         node = node.getNext();
         previous.setNext(new Entry<T>(element, node));
-        length++;
+        this.length++;
     }
 
     void clear() throws Exception {
@@ -260,5 +260,12 @@ public class List<T> {
             temp[i] = this.get(i).element;
         }
         return temp;
+    }
+
+    @SuppressWarnings("unchecked")
+    void push(T... elements) {
+        for (T temp : elements) {
+            this.push(temp);
+        }
     }
 }
