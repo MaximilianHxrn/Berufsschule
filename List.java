@@ -25,6 +25,7 @@ public class List<T> {
     void push(T element) {
         if (head == null) {
             this.head = new Entry<T>(element, null);
+            this.head.setPrevious(null);
             this.tail = this.head;
         } else {
             Entry<T> new_node = new Entry<T>(element, null);
@@ -37,19 +38,16 @@ public class List<T> {
     T pop() {
         T temp = null;
         if (head == tail) {
-            temp = this.head.element;
+            temp = this.head.getElement();
             this.head = null;
             this.tail = null;
+            length--;
             return temp;
         }
-        Entry<T> node = this.tail;
-        for (int i = 0; i < length - 2; i++) {
-            node = node.getNext();
-        }
-        Entry<T> previous = node;
-        node = node.getNext();
+        Entry<T> node = this.head;
+        Entry<T> previous = this.head.getPrevious();
         previous.setNext(null);
-        temp = node.element;
+        temp = node.getElement();
         node = null;
         this.length--;
         this.head = previous;
@@ -79,8 +77,9 @@ public class List<T> {
         T temp;
         Entry<T> node = this.tail;
         if (index == 0) {
-            temp = this.tail.element;
+            temp = this.tail.getElement();
             this.tail = this.tail.getNext();
+            this.length--;
             return temp;
         }
         for (int i = 0; i < index - 1; i++) {
@@ -89,7 +88,7 @@ public class List<T> {
         Entry<T> previous = node;
         node = node.getNext();
         previous.setNext(node.getNext());
-        temp = node.element;
+        temp = node.getElement();
         node = null;
         this.length--;
         return temp;
@@ -106,7 +105,7 @@ public class List<T> {
         }
         Entry<T> currNode = this.tail;
         while (currNode != null) {
-            sb.append(currNode.element + " -> ");
+            sb.append(currNode.getElement() + " -> ");
             currNode = currNode.getNext();
         }
         if (sb.length() < 10) {
@@ -126,19 +125,19 @@ public class List<T> {
 
     List<T> reverseList() throws Exception {
         List<T> temp = new List<>();
-        for (int i = this.length - 2; i >= 0; i--) {
-            temp.push(this.get(i).element);
+        for (int i = this.length - 1; i >= 0; i--) {
+            temp.push(this.get(i).getElement());
         }
         return temp;
     }
 
     T last() {
-        return this.head.element;
+        return this.head == null ? null : this.head.getElement();
     }
 
     void concat(List<T> list) {
         for (int i = 0; i < list.length; i++) {
-            push(list.get(i).element);
+            this.push(list.get(i).getElement());
         }
     }
 
@@ -146,7 +145,7 @@ public class List<T> {
     protected List<T> clone() {
         List<T> temp = new List<>();
         for (int i = 0; i < this.length; i++) {
-            temp.push(this.get(i).element);
+            temp.push(this.get(i).getElement());
         }
         return temp;
     }
@@ -159,7 +158,7 @@ public class List<T> {
     void removeDuplicates() throws Exception {
         for (int i = 0; i < this.length; i++) {
             for (int j = i + 1; j < this.length; j++) {
-                if (this.get(i).element.equals(this.get(j).element)) {
+                if (this.get(i).getElement().equals(this.get(j).getElement())) {
                     this.pop(j);
                 }
             }
@@ -200,7 +199,7 @@ public class List<T> {
 
     boolean contains(T element) {
         for (int i = 0; i < this.length; i++) {
-            if (this.get(i).element.equals(element)) {
+            if (this.get(i).getElement().equals(element)) {
                 return true;
             }
         }
@@ -240,7 +239,7 @@ public class List<T> {
     List<T> subList(int start, int end) {
         List<T> temp = new List<T>();
         for (int i = start; i < end; i++) {
-            temp.push(this.get(i).element);
+            temp.push(this.get(i).getElement());
         }
         return temp;
     }
@@ -248,7 +247,7 @@ public class List<T> {
     List<T> subList(int start) {
         List<T> temp = new List<T>();
         for (int i = start; i < this.length; i++) {
-            temp.push(this.get(i).element);
+            temp.push(this.get(i).getElement());
         }
         return temp;
     }
@@ -257,7 +256,7 @@ public class List<T> {
         @SuppressWarnings("unchecked")
         T[] temp = (T[]) new Object[this.length];
         for (int i = 0; i < this.length; i++) {
-            temp[i] = this.get(i).element;
+            temp[i] = this.get(i).getElement();
         }
         return temp;
     }

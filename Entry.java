@@ -1,7 +1,7 @@
 public class Entry<T> {
-    T element;
+    private T element;
+    private Entry<T> previous;
     private Entry<T> next;
-    int index;
 
     Entry(T element, Entry<T> next) {
         this.element = element;
@@ -18,9 +18,28 @@ public class Entry<T> {
 
     void setNext(Entry<T> next) {
         this.next = next;
+        if (next != null) {
+            next.setPrevious(this);
+        }
     }
 
     public String toString() {
         return element.toString();
+    }
+
+    T getElement() {
+        return this.element;
+    }
+
+    void setElement(T element) {
+        this.element = element;
+    }
+
+    Entry<T> getPrevious() {
+        return this.previous;
+    }
+
+    void setPrevious(Entry<T> previous) {
+        this.previous = previous;
     }
 }
