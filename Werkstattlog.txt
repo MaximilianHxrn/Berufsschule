@@ -1,0 +1,173 @@
+----------------------------------------
+Runde 1
+LEIOTI; Farbe: Gelb bearbeitet nun #0 
+ --> Schoko-Nikolaus:0.81;true
+OPOTAZUMA; Farbe: Gelb bearbeitet nun #1 
+ --> Thermo-Ski-Unterwaesche:0.29;23
+Name: OPOMU; Farbe: Rot bearbeitet nun #2 
+ --> Gemaltes Memory:7.46;11.190000000000001
+YIFIGEROSIOTI; Farbe: Gelb bearbeitet nun #3 
+ --> Leckere Papaya:14.17;true
+NORJOLA; Farbe: Blau bearbeitet nun #4 
+ --> Rote Unterbuxe:0.79;14
+ROMIBORDUR; Farbe: Blau bearbeitet nun #5 
+ --> Selbstgemachtes Pesto:3.15;true
+Name: DURXUL; Farbe: Rot bearbeitet nun #6 
+ --> Grosser Bagger:3.41;4.774
+OPOHATIKO; Farbe: Gelb bearbeitet nun #7 
+ --> Schoko-Nikolaus:5.1;true
+UMAROMILE; Farbe: Gelb bearbeitet nun #8 
+ --> Knusprige Kekse:6.95;true
+BORDUROPO; Farbe: Blau bearbeitet nun #9 
+ --> Rasende Eisenbahn:5.32;9.044
+Name: UMATAZZOTO; Farbe: Rot bearbeitet nun #10 
+ --> Gemaltes Memory:2.31;3.465
+ZOTOVAR; Farbe: Gelb bearbeitet nun #11 
+ --> Leckere Papaya:3.74;true
+ZOTOARI; Farbe: Blau bearbeitet nun #12 
+ --> Rasende Eisenbahn:6.82;11.594
+Name: EORLJOLAWEL; Farbe: Rot bearbeitet nun #13 
+ --> Zipfelige Muetze:4.73;16
+GEROSKO; Farbe: Blau bearbeitet nun #14 
+ --> Schnelles Kartenspiel:8.63;18.123
+----------------------------------------
+Runde 2
+----------------------------------------
+Runde 3
+LEIOTI; Farbe: Gelb bearbeitet nun #15 
+ --> Saftige Kekse:14.56;true
+ROMIBORDUR; Farbe: Blau bearbeitet nun #16 
+ --> Saftige Kekse:4.49;true
+Name: DURXUL; Farbe: Rot bearbeitet nun #17 
+ --> Kuscheliger Schal:3.18;17
+Name: UMATAZZOTO; Farbe: Rot bearbeitet nun #18 
+ --> Selbstgemachtes Pesto:14.78;true
+----------------------------------------
+Runde 4
+OPOTAZUMA; Farbe: Gelb bearbeitet nun #19 
+ --> Rote Unterbuxe:0.58;14
+----------------------------------------
+Runde 5
+Name: OPOMU; Farbe: Rot bearbeitet nun #20 
+ --> Kuscheliger Schal:1.8;17
+NORJOLA; Farbe: Blau bearbeitet nun #21 
+ --> Schoko-Nikolaus:4.63;true
+----------------------------------------
+Runde 6
+ROMIBORDUR; Farbe: Blau bearbeitet nun #22 
+ --> Dicker Pullover:0.11;15
+ZOTOVAR; Farbe: Gelb bearbeitet nun #23 
+ --> Warme Socken:4.47;12
+Name: EORLJOLAWEL; Farbe: Rot bearbeitet nun #24 
+ --> Leckere Papaya:1.83;true
+----------------------------------------
+Runde 7
+OPOTAZUMA; Farbe: Gelb bearbeitet nun #25 
+ --> Interessantes Brettspiel:0.54;1.296
+Name: OPOMU; Farbe: Rot bearbeitet nun #26 
+ --> Interessantes Brettspiel:1.32;3.168
+Name: DURXUL; Farbe: Rot bearbeitet nun #27 
+ --> Schnelles Kartenspiel:8.26;17.346
+----------------------------------------
+Runde 8
+Name: OPOMU; Farbe: Rot bearbeitet nun #28 
+ --> Schoko-Nikolaus:0.55;true
+NORJOLA; Farbe: Blau bearbeitet nun #29 
+ --> Schoko-Nikolaus:12.13;true
+OPOHATIKO; Farbe: Gelb bearbeitet nun #30 
+ --> Lange Struempfe:2.73;15
+Name: EORLJOLAWEL; Farbe: Rot bearbeitet nun #31 
+ --> Rasende Eisenbahn:4.48;7.616000000000001
+----------------------------------------
+Runde 9
+OPOTAZUMA; Farbe: Gelb bearbeitet nun #32 
+ --> Thermo-Ski-Unterwaesche:0.04;23
+Name: OPOMU; Farbe: Rot bearbeitet nun #33 
+ --> Kuscheliger Schal:2.68;17
+UMAROMILE; Farbe: Gelb bearbeitet nun #34 
+ --> Rasende Eisenbahn:7.32;12.443999999999999
+----------------------------------------
+Runde 10
+ROMIBORDUR; Farbe: Blau bearbeitet nun #35 
+ --> Schnelles Kartenspiel:2.04;4.284000000000001
+BORDUROPO; Farbe: Blau bearbeitet nun #36 
+ --> Schnelles Auto:2.07;2.8979999999999997
+----------------------------------------
+Runde 11
+ZOTOARI; Farbe: Blau bearbeitet nun #37 
+ --> Kuscheliger Schal:3.8;17
+Name: EORLJOLAWEL; Farbe: Rot bearbeitet nun #38 
+ --> Selbstgemachtes Pesto:8.74;true
+----------------------------------------
+Runde 12
+OPOTAZUMA; Farbe: Gelb bearbeitet nun #39 
+ --> Schoko-Nikolaus:9.26;true
+Name: OPOMU; Farbe: Rot bearbeitet nun #40 
+ --> Selbstgemachtes Pesto:9.41;true
+Name: DURXUL; Farbe: Rot bearbeitet nun #41 
+ --> Schnelles Kartenspiel:1.36;2.8560000000000003
+----------------------------------------
+Runde 13
+Name: DURXUL; Farbe: Rot bearbeitet nun #42 
+ --> Niedliche Puppe:7.8;11.7
+OPOHATIKO; Farbe: Gelb bearbeitet nun #43 
+ --> Niedliche Puppe:3.14;4.71
+ZOTOVAR; Farbe: Gelb bearbeitet nun #44 
+ --> Zipfelige Muetze:0.02;16
+GEROSKO; Farbe: Blau bearbeitet nun #45 
+ --> Zipfelige Muetze:4.06;16
+----------------------------------------
+Runde 14
+----------------------------------------
+Runde 15
+NORJOLA; Farbe: Blau bearbeitet nun #46 
+ --> Gemaltes Memory:4.38;6.57
+----------------------------------------
+Runde 16
+ROMIBORDUR; Farbe: Blau bearbeitet nun #47 
+ --> Rasende Eisenbahn:8.97;15.249
+BORDUROPO; Farbe: Blau bearbeitet nun #48 
+ --> Kuscheliger Schal:2.58;17
+ZOTOVAR; Farbe: Gelb bearbeitet nun #49 
+ --> Leckere Papaya:3.54;true
+----------------------------------------
+Runde 17
+----------------------------------------
+Runde 18
+----------------------------------------
+Runde 19
+----------------------------------------
+Runde 20
+----------------------------------------
+Runde 21
+----------------------------------------
+Runde 22
+----------------------------------------
+Runde 23
+----------------------------------------
+Runde 24
+----------------------------------------
+Runde 25
+----------------------------------------
+Runde 26
+----------------------------------------
+Runde 27
+----------------------------------------
+Leistungsindex: 
+1. Platz: GEROSKO; Farbe: Blau mit einer Effizienz von 0.0 Geschenke pro Runde.
+2. Platz: Name: EORLJOLAWEL; Farbe: Rot mit einer Effizienz von 0.0 Geschenke pro Runde.
+3. Platz: ZOTOARI; Farbe: Blau mit einer Effizienz von 0.0 Geschenke pro Runde.
+----------------------------------------
+4. Platz: ZOTOVAR; Farbe: Gelb mit einer Effizienz von 0.0 Geschenke pro Runde.
+5. Platz: Name: UMATAZZOTO; Farbe: Rot mit einer Effizienz von 0.0 Geschenke pro Runde.
+6. Platz: BORDUROPO; Farbe: Blau mit einer Effizienz von 0.0 Geschenke pro Runde.
+7. Platz: UMAROMILE; Farbe: Gelb mit einer Effizienz von 0.0 Geschenke pro Runde.
+8. Platz: OPOHATIKO; Farbe: Gelb mit einer Effizienz von 0.0 Geschenke pro Runde.
+9. Platz: Name: DURXUL; Farbe: Rot mit einer Effizienz von 0.0 Geschenke pro Runde.
+10. Platz: ROMIBORDUR; Farbe: Blau mit einer Effizienz von 0.0 Geschenke pro Runde.
+11. Platz: NORJOLA; Farbe: Blau mit einer Effizienz von 0.0 Geschenke pro Runde.
+12. Platz: YIFIGEROSIOTI; Farbe: Gelb mit einer Effizienz von 0.0 Geschenke pro Runde.
+13. Platz: Name: OPOMU; Farbe: Rot mit einer Effizienz von 0.0 Geschenke pro Runde.
+14. Platz: OPOTAZUMA; Farbe: Gelb mit einer Effizienz von 0.0 Geschenke pro Runde.
+15. Platz: LEIOTI; Farbe: Gelb mit einer Effizienz von 0.0 Geschenke pro Runde.
+Folgende Wichtel wurden geklont:Name: Name: EORLJOLAWEL; Farbe: Rot; Farbe: Rot GEROSKO; Farbe: Blau; Farbe: Blau ZOTOVAR; Farbe: Gelb; Farbe: Gelb
