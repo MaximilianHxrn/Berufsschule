@@ -1,0 +1,5 @@
+a) Lösen Sie die Türme von Hanoi für 2,3 und 4 Scheiben und überlegen Sie
+   sich daraus eine rekursive Lösung für 5,6,...n Scheiben.
+
+b) Setzen Sie die Lösung in der Klasse Hanoi in der Methode turmVerschieben
+   für eine schrittweise grafische Ausgabe des Verschiebevorgangs um.
