@@ -61,6 +61,10 @@ public class ToDoListEntry extends JFrame {
 
       void add(Entry e) {
          entries.add(e);
+         updateFrame();
+      }
+
+      void updateFrame() {
          try {
             list.updateUI();
          } catch (Exception exc) {
@@ -95,15 +99,18 @@ public class ToDoListEntry extends JFrame {
             } catch (IOException e1) {
                e1.printStackTrace();
             }
+            updateFrame();
          }
       }
 
       void removeAt(int index) {
          entries.remove(index);
+         updateFrame();
       }
 
       void removeAll() {
          entries.clear();
+         updateFrame();
       }
 
       @Override
