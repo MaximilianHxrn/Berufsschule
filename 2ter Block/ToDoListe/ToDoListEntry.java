@@ -23,19 +23,19 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.xml.parsers.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 /**
  * ToDo-List with Entry.
@@ -65,7 +65,6 @@ public class ToDoListEntry extends JFrame {
    private class Controller extends AbstractListModel<Entry> {
       private ArrayList<Entry> entries;
       private File file;
-      @SuppressWarnings("unused")
       private int type;
 
       public Controller(String fileName) {
@@ -86,7 +85,7 @@ public class ToDoListEntry extends JFrame {
 
       void updateFrame() {
          try {
-            list.updateUI();
+            fireContentsChanged(this, 0, 1);
          } catch (Exception exc) {
             exc.printStackTrace();
          }
@@ -110,16 +109,16 @@ public class ToDoListEntry extends JFrame {
                   Element rootElement = doc.createElement("TodoListEntry");
                   doc.appendChild(rootElement);
                   for (int i = 0; i < entries.size(); i++) {
-                     Element temp = doc.createElement("Entry" + (i + 1));
+                     Element temp = doc.createElement("Entry");
                      Entry e = entries.get(i);
-                     temp.setAttribute("Anzahl", Integer.toString(e.anz));
                      temp.setAttribute("Name", e.besch);
+                     temp.setAttribute("Anzahl", Integer.toString(e.anz));
                      rootElement.appendChild(temp);
                   }
                   TransformerFactory transformerFactory = TransformerFactory.newInstance();
                   Transformer transformer = transformerFactory.newTransformer();
                   DOMSource source = new DOMSource(doc);
-                  StreamResult result = new StreamResult(new File("todo.xml"));
+                  StreamResult result = new StreamResult(file);
                   transformer.transform(source, result);
                } catch (ParserConfigurationException pce) {
                   pce.printStackTrace();
@@ -130,10 +129,6 @@ public class ToDoListEntry extends JFrame {
             }
          }
 
-      }
-
-      private String cutWhiteSpace(String st) {
-         return st.replaceAll("\\s+", "");
       }
 
       void load() {
@@ -162,20 +157,19 @@ public class ToDoListEntry extends JFrame {
                case 2: {
                   try {
                      DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-                     // an instance of builder to parse the specified xml file
                      DocumentBuilder db;
                      db = dbf.newDocumentBuilder();
                      Document doc;
                      doc = db.parse(file);
                      doc.getDocumentElement().normalize();
-                     System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
-                     NodeList nodeList = doc.getElementsByTagName("student");
+                     NodeList nodeList = doc.getElementsByTagName("Entry");
                      for (int itr = 0; itr < nodeList.getLength(); itr++) {
                         Node node = nodeList.item(itr);
-                        System.out.println("\nNode Name :" + node.getNodeName());
                         if (node.getNodeType() == Node.ELEMENT_NODE) {
                            Element eElement = (Element) node;
-                           String temp = eElement.getElementsByTagName("Name").item(0).getTextContent();
+                           String name = eElement.getAttribute("Name");
+                           String anzahl = eElement.getAttribute("Anzahl");
+                           add(new Entry(name, Integer.parseInt(anzahl)));
                         }
                      }
                   } catch (Exception e) {
@@ -319,7 +313,7 @@ public class ToDoListEntry extends JFrame {
       // make it visible
       setVisible(true);
 
-      // controller.load();
+      controller.load();
       setLocationRelativeTo(null);
    }
 
