@@ -23,6 +23,19 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.xml.parsers.*;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  * ToDo-List with Entry.
@@ -51,12 +64,19 @@ public class ToDoListEntry extends JFrame {
 
    private class Controller extends AbstractListModel<Entry> {
       private ArrayList<Entry> entries;
-      File file;
+      private File file;
+      @SuppressWarnings("unused")
+      private int type;
 
       public Controller(String fileName) {
          super();
          entries = new ArrayList<>();
          file = new File(fileName);
+         if (fileName.endsWith(".txt")) {
+            type = 1;
+         } else if (fileName.endsWith(".xml")) {
+            type = 2;
+         }
       }
 
       void add(Entry e) {
@@ -73,31 +93,96 @@ public class ToDoListEntry extends JFrame {
       }
 
       public void save() throws FileNotFoundException, UnsupportedEncodingException {
-         PrintWriter writer = new PrintWriter(file.getAbsolutePath(), "UTF-8");
-         for (int i = 0; i < entries.size(); i++) {
-            writer.write(entries.get(i) + "\n");
+         switch (type) {
+            case 1: {
+               PrintWriter writer = new PrintWriter(file.getAbsolutePath(), "UTF-8");
+               for (int i = 0; i < entries.size(); i++) {
+                  writer.write(entries.get(i) + "\n");
+               }
+               writer.close();
+               break;
+            }
+            case 2: {
+               try {
+                  DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+                  DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+                  Document doc = docBuilder.newDocument();
+                  Element rootElement = doc.createElement("TodoListEntry");
+                  doc.appendChild(rootElement);
+                  for (int i = 0; i < entries.size(); i++) {
+                     Element temp = doc.createElement("Entry" + (i + 1));
+                     Entry e = entries.get(i);
+                     temp.setAttribute("Anzahl", Integer.toString(e.anz));
+                     temp.setAttribute("Name", e.besch);
+                     rootElement.appendChild(temp);
+                  }
+                  TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                  Transformer transformer = transformerFactory.newTransformer();
+                  DOMSource source = new DOMSource(doc);
+                  StreamResult result = new StreamResult(new File("todo.xml"));
+                  transformer.transform(source, result);
+               } catch (ParserConfigurationException pce) {
+                  pce.printStackTrace();
+               } catch (TransformerException tfe) {
+                  tfe.printStackTrace();
+               }
+               break;
+            }
          }
-         writer.close();
+
+      }
+
+      private String cutWhiteSpace(String st) {
+         return st.replaceAll("\\s+", "");
       }
 
       void load() {
          if (file.exists()) {
-            try {
-               BufferedReader br = new BufferedReader(new FileReader(file));
-               String st;
-               while ((st = br.readLine()) != null) {
-                  if (!st.isEmpty()) {
-                     st = st.replaceAll("\\s+", "");
-                     Entry entry = new Entry(st.substring(0, st.length() - 2),
-                           Integer.parseInt(Character.toString((st.charAt(st.length() - 1)))));
-                     add(entry);
+            switch (type) {
+               case 1: {
+                  try {
+                     BufferedReader br = new BufferedReader(new FileReader(file));
+                     String st;
+                     while ((st = br.readLine()) != null) {
+                        if (!st.isEmpty()) {
+                           st = st.replaceAll("\\s+", "");
+                           Entry entry = new Entry(st.substring(0, st.length() - 2),
+                                 Integer.parseInt(Character.toString((st.charAt(st.length() - 1)))));
+                           add(entry);
+                        }
+                     }
+                     br.close();
+                  } catch (FileNotFoundException e) {
+                     e.printStackTrace();
+                  } catch (IOException e1) {
+                     e1.printStackTrace();
                   }
+                  break;
                }
-               br.close();
-            } catch (FileNotFoundException e) {
-               e.printStackTrace();
-            } catch (IOException e1) {
-               e1.printStackTrace();
+               case 2: {
+                  try {
+                     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                     // an instance of builder to parse the specified xml file
+                     DocumentBuilder db;
+                     db = dbf.newDocumentBuilder();
+                     Document doc;
+                     doc = db.parse(file);
+                     doc.getDocumentElement().normalize();
+                     System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
+                     NodeList nodeList = doc.getElementsByTagName("student");
+                     for (int itr = 0; itr < nodeList.getLength(); itr++) {
+                        Node node = nodeList.item(itr);
+                        System.out.println("\nNode Name :" + node.getNodeName());
+                        if (node.getNodeType() == Node.ELEMENT_NODE) {
+                           Element eElement = (Element) node;
+                           String temp = eElement.getElementsByTagName("Name").item(0).getTextContent();
+                        }
+                     }
+                  } catch (Exception e) {
+                     e.printStackTrace();
+                  }
+                  break;
+               }
             }
             updateFrame();
          }
@@ -129,7 +214,7 @@ public class ToDoListEntry extends JFrame {
       new ToDoListEntry();
    }
 
-   private Controller controller = new Controller("todo.txt");
+   private Controller controller = new Controller("todo.xml");
    private JList<Entry> list = new JList<>(controller);
    private final JTextField tfb;
    private final JTextField tfa;
@@ -234,7 +319,7 @@ public class ToDoListEntry extends JFrame {
       // make it visible
       setVisible(true);
 
-      controller.load();
+      // controller.load();
       setLocationRelativeTo(null);
    }
 
