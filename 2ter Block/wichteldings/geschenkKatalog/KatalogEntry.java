@@ -50,4 +50,9 @@ public class KatalogEntry implements Comparable<KatalogEntry>{
 		return col.compare(geschenk.geschenkType().getType().toString(), o.geschenk.geschenkType().getType().toString());
 	}
 
+	public int erhoehe(int anzahl) {
+		this.anzahl += anzahl;
+		return this.anzahl;
+	}
+
 }

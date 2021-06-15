@@ -41,7 +41,14 @@ public class Util {
 	}
 	
 	public static void printDOTFile(String name, INode<?> root) throws IOException {
-		File f = new File("DotFiles\\" + name + ".dot");
+		File folder = new File("DotFiles");
+		if(!folder.exists()) {
+			folder.mkdir();
+		}
+		File f = new File("DotFiles" +  File.separatorChar + name + ".dot");
+		if(!f.exists()) {
+			f.createNewFile();
+		}
 		FileWriter writer = new FileWriter(f);
 		BufferedWriter bwriter = new BufferedWriter(writer);
 		
