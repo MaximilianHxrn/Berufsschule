@@ -11,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -147,10 +146,8 @@ public class ToDoListEntry extends JFrame {
                         }
                      }
                      br.close();
-                  } catch (FileNotFoundException e) {
+                  } catch (Exception e) {
                      e.printStackTrace();
-                  } catch (IOException e1) {
-                     e1.printStackTrace();
                   }
                   break;
                }
