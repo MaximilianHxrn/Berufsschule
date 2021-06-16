@@ -1,4 +1,4 @@
-package katalogTest;
+package test.katalogTest;
 
 import geschenk.Geschenk;
 import geschenk.GeschenkType;

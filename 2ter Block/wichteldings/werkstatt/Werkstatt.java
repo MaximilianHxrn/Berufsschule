@@ -1,6 +1,6 @@
 package werkstatt;
 
-import java.io.*;
+//import java.io.*;
 import java.util.*;
 
 import geschenk.*;

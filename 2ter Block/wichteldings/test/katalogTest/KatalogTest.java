@@ -6,12 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import geschenk.GeschenkType;
 import geschenkKatalog.Katalog;
 import geschenkKatalog.KatalogEntry;
+import test.wichtelTest.BeforeEach;
 
 public class KatalogTest {
 	
@@ -57,6 +57,7 @@ public class KatalogTest {
 	
 	@Test
 	public void toStringTest() {
+		setUp();
 		System.out.println("--------");
 		System.out.println(kat.toString());
 		System.out.println("--------");
@@ -64,6 +65,7 @@ public class KatalogTest {
 	
 	@Test
 	public void toStringReverseTest() {
+		setUp();
 		System.out.println("--------");
 		System.out.println(kat.toStringReverse());
 		System.out.println("--------");

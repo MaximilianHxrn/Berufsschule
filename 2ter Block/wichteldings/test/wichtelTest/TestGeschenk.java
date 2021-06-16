@@ -1,4 +1,4 @@
-package wichtelTest;
+package test.wichtelTest;
 import geschenk.Geschenk;
 
 public class TestGeschenk extends Geschenk{

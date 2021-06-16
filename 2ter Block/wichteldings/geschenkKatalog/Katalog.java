@@ -64,15 +64,37 @@ public class Katalog implements IKatalog{
 
 	@Override
 	public String toString() {
-		return null;
+		return printPostorder(root);
 	}
-	
+
+	String printPostorder(KatalogNode node)
+    {
+        if (node == null)
+            return "";
+			
+        return new StringBuilder()
+		           .append(printPostorder(node.left))
+		           .append(node.element + "\n")
+				   .append(printPostorder(node.right))
+				   .toString();
+    }
+ 
 	@Override
 	public String toStringReverse() {
-		// TODO Auto-generated method stub
-		return null;
+		return printReverse(root);
 	}
 	
+	private String printReverse(KatalogNode node) {
+		if (node == null)
+            return "";
+			
+        return new StringBuilder()
+		           .append(printReverse(node.right))
+		           .append(node.element + "\n")
+				   .append(printReverse(node.left))
+				   .toString();
+	}
+
 	@Override
 	public int getGeschenkanzahl() {
 		// TODO Auto-generated method stub
