@@ -17,10 +17,10 @@ public class Katalog implements IKatalog {
 			root = new KatalogNode(entry);
 			return entry.getAnzahl();
 		}
-		return add(entry, root, null);
+		return add(entry, root);
 	}
 
-	private int add(KatalogEntry entry, KatalogNode node, KatalogNode previous) {
+	private int add(KatalogEntry entry, KatalogNode node) {
 		int compare = node.element.compareTo(entry);
 		if (compare == 0) {
 			return node.element.erhoehe(entry.getAnzahl());
@@ -31,7 +31,7 @@ public class Katalog implements IKatalog {
 				node.right.parent = node;
 				return node.right.element.getAnzahl();
 			}
-			return add(entry, node.right, node);
+			return add(entry, node.right);
 		}
 		// links weiter
 		if (node.left == null) {
@@ -39,7 +39,7 @@ public class Katalog implements IKatalog {
 			node.left.parent = node;
 			return entry.getAnzahl();
 		}
-		return add(entry, node.left, node);
+		return add(entry, node.left);
 	}
 
 	public List<KatalogEntry> search(String name) {
