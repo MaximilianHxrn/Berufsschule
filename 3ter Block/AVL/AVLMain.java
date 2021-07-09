@@ -1,12 +1,11 @@
-package avl;
+import java.io.IOException;
 
 public class AVLMain{
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		AVLBaum<Integer> test01 = new AVLBaum<Integer>();
 		test01.add(10);
 		test01.add(5);
-		test01.printBFs();
 		test01.add(4);
 		test01.printDotFile("RightRotTest01");
 		
