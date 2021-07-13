@@ -1,38 +1,41 @@
 package de.nm.ltxml.core;
 
-public abstract class Bezeichnung extends Base {
-    protected String name;
+import javax.xml.bind.annotation.XmlAttribute;
 
-    Bezeichnung() {
+public abstract class Bezeichnung extends Base {
+    @XmlAttribute
+    protected String bezeichnung;
+
+    public Bezeichnung() {
         super();
         super.id = "??";
-        this.name = "??";    
+        this.bezeichnung = "??";    
     }
 
     Bezeichnung(String id) {
         super();
         super.id = id;
-        this.name = "??";
+        this.bezeichnung = "??";
     }
 
     Bezeichnung(String id, String name) {
         super();
         super.id = id;
-        this.name = name;
+        this.bezeichnung = name;
     }
 
     String getBezeichnung() {
-        return name;
+        return bezeichnung;
     }
 
     void setBezeichnung(String name) {
-        this.name = name;
+        this.bezeichnung = name;
     }
 
     public String toString() {
         return new StringBuilder()
                    .append("ID: " + super.getId())
-                   .append(" Name: " + this.name)
+                   .append(" Name: " + this.bezeichnung)
                    .toString();
     }
 }

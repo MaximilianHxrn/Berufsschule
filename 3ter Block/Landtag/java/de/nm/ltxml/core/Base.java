@@ -1,6 +1,9 @@
 package de.nm.ltxml.core;
 
+import javax.xml.bind.annotation.XmlAttribute;
+
 public abstract class Base {
+    @XmlAttribute
     protected String id;
 
     public Base() {

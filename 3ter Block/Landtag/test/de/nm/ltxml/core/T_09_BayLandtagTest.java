@@ -88,7 +88,7 @@ public class T_09_BayLandtagTest {
          m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
          m.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
          final File output = new File(
-                  "target/" + this.getClass().getSimpleName() + "_01.xml");
+            System.getProperty("user.dir") + "/" + this.getClass().getSimpleName() + "_01.xml");
          m.marshal(lt, output);
          assertTrue(true);
 

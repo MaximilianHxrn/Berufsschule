@@ -48,7 +48,7 @@ public class T_20_BayLandtagTest {
       abg.setTitel("Dr.");
       abg.setBeruf("Gaukler");
 
-      final Path path = Paths.get("src/images/555500000096.jpg");
+      final Path path = Paths.get("C:\\Users\\Shabib\\Desktop\\Repository\\Berufsschule\\3ter Block\\Landtag\\images\\555500000096.jpg");
 
       byte[] b1 = null;
       try {
@@ -71,7 +71,7 @@ public class T_20_BayLandtagTest {
          final Marshaller m = context.createMarshaller();
          m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
          m.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-         final File output = new File("target/" + this.getClass().getSimpleName() + "_01.xml");
+         final File output = new File(System.getProperty("user.dir") + "/" + this.getClass().getSimpleName() + "_01.xml");
          m.marshal(lt, output);
          assertTrue(true);
 

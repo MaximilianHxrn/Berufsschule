@@ -35,7 +35,6 @@ public class AVLBaum<T extends Comparable<T>> {
 			}
 
 			boolean temp = add(toAdd, node.rightNode);
-			// node.hoeheRechterTeilbaum = getHoehe(node.rightNode);
 			return temp;
 		}
 		// Links weiter
@@ -45,7 +44,6 @@ public class AVLBaum<T extends Comparable<T>> {
 			return true;
 		}
 		boolean temp = add(toAdd, node.leftNode);
-		// node.hoeheLinkerTeilbaum = getHoehe(node.leftNode);
 		return temp;
 	}
 
@@ -93,14 +91,12 @@ public class AVLBaum<T extends Comparable<T>> {
 		}
 		if (node.leftNode != null) {
 			node.hoeheLinkerTeilbaum = berechneHoehe(node.leftNode);
-		}
-		else {
+		} else {
 			node.hoeheLinkerTeilbaum = 0;
 		}
 		if (node.rightNode != null) {
 			node.hoeheRechterTeilbaum = berechneHoehe(node.rightNode);
-		}
-		else {
+		} else {
 			node.hoeheRechterTeilbaum = 0;
 		}
 		return 1 + Math.max(node.hoeheLinkerTeilbaum, node.hoeheRechterTeilbaum);
@@ -117,8 +113,7 @@ public class AVLBaum<T extends Comparable<T>> {
 				if (first.parentNode.leftNode.element.equals(first.element)) {
 					first.parentNode.leftNode = second;
 				}
-			}
-			if (first.parentNode.rightNode != null) {
+			} else if (first.parentNode.rightNode != null) {
 				if (first.parentNode.rightNode.element.equals(first.element)) {
 					first.parentNode.rightNode = second;
 				}
@@ -149,7 +144,7 @@ public class AVLBaum<T extends Comparable<T>> {
 					first.parentNode.leftNode = second;
 				}
 			}
-			if (first.parentNode.rightNode != null) {
+			else if (first.parentNode.rightNode != null) {
 				if (first.parentNode.rightNode.element.equals(first.element)) {
 					first.parentNode.rightNode = second;
 				}

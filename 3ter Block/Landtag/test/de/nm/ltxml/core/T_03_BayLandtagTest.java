@@ -62,7 +62,7 @@ public class T_03_BayLandtagTest {
          m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
          m.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
          final File output = new File(
-                  "hallo.xml");
+                  System.getProperty("user.dir") + "/" + this.getClass().getSimpleName() + "_01.xml");
          m.marshal(lt, output);
          assertTrue(true);
 
@@ -72,7 +72,7 @@ public class T_03_BayLandtagTest {
          final Element root = document.getRootElement();
 
          // check root
-         assertEquals("bayLandtag", root.getName());
+         assertEquals("baylandtag", root.getName());
 
          // check abg
          final Element abge = root.getChild("abgeordnete").getChild("abg");

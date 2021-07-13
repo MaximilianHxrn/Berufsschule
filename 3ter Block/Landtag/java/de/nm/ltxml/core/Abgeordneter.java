@@ -2,8 +2,11 @@ package de.nm.ltxml.core;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlAttribute;
+
 public class Abgeordneter extends Base {
     String vorname;
+    @XmlAttribute
     String name;
     String titel;
     String beruf;
@@ -13,6 +16,7 @@ public class Abgeordneter extends Base {
     String gesin;
     Familienstand fam;
     Konfession konf;
+    byte[] bild;
 
     Abgeordneter() {
         super();
@@ -99,11 +103,23 @@ public class Abgeordneter extends Base {
                    .toString();
     }
 
-    public void setFam(Familienstand fam2) {
-        // TODO
+    public void setFam(Familienstand fam) {
+        this.fam = fam;
     }
 
-    public void setKonf(Konfession konf2) {
-        // TODO
+    public void setKonf(Konfession konf) {
+        this.konf = konf;
+    }
+
+    public Object getSetParteiAbg() {
+        return null;
+    }
+
+    public void setBild(byte[] bild) {
+        this.bild = bild;
+    }
+
+    public byte[] getBild() {
+        return bild;
     }
 }

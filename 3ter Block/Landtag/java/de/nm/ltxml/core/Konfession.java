@@ -5,7 +5,7 @@ public class Konfession extends Bezeichnung {
     public Konfession(String id, String name) {
         super();
         super.id = id;
-        super.name = name;
+        super.bezeichnung = name;
     }
 
     public Konfession() {
@@ -15,7 +15,7 @@ public class Konfession extends Bezeichnung {
     public String toString() {
         return new StringBuilder()
                    .append("Konfession: id=" + super.getId())
-                   .append(", bezeichnung=" + this.name)
+                   .append(", bezeichnung=" + this.bezeichnung)
                    .toString();
     }
 }

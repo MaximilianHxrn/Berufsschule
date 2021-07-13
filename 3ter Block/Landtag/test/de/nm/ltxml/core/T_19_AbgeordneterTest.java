@@ -53,7 +53,7 @@ public class T_19_AbgeordneterTest {
       try {
          // File input = new File("src/images/555500000096.jpg");
 
-         final Path path = Paths.get("src/images/555500000096.jpg");
+         final Path path = Paths.get("C:\\Users\\Shabib\\Desktop\\Repository\\Berufsschule\\3ter Block\\Landtag\\images\\555500000096.jpg");
 
          abg.setBild(Files.readAllBytes(path));
 

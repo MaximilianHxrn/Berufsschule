@@ -9,13 +9,13 @@ public class Orden extends Bezeichnung {
     public Orden(String id, String name) {
         super();
         super.id = id;
-        super.name = name;
+        super.bezeichnung = name;
     }
 
     public String toString() {
         return new StringBuilder()
                    .append("Orden: id=" + super.id)
-                   .append(", bezeichnung=" + super.name)
+                   .append(", bezeichnung=" + super.bezeichnung)
                    .toString();
     }
 }

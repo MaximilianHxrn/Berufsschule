@@ -1,7 +1,9 @@
 package de.nm.ltxml.core;
 
-public class Kreis extends Bezeichnung {
+import javax.xml.bind.annotation.XmlAttribute;
 
+public class Kreis extends Bezeichnung {
+    @XmlAttribute
     String type;
 
     Kreis() {
@@ -12,13 +14,13 @@ public class Kreis extends Bezeichnung {
     public Kreis(String id, String name) {
         super();
         super.id = id;
-        super.name = name;
+        super.bezeichnung = name;
     }
 
     public Kreis(String id, String type, String name) {
         super.id = id;
         this.type = type;
-        super.name = name;
+        super.bezeichnung = name;
     }
 
     String getType() {
@@ -29,7 +31,7 @@ public class Kreis extends Bezeichnung {
         return new StringBuilder()
                    .append("Kreis: type=" + this.type)
                    .append(", id=" + super.id)
-                   .append(", bezeichnung=" + super.name)
+                   .append(", bezeichnung=" + super.bezeichnung)
                    .toString();
     }
 }
