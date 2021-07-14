@@ -17,4 +17,8 @@ public class Staatsregierung extends Bezeichnung {
                    .append(", bezeichnung=" + super.bezeichnung)
                    .toString();
     }
+
+    public Object getSetStaatAbg() {
+        return null;
+    }
 }

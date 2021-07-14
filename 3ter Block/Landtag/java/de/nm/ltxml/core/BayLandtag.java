@@ -6,7 +6,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import de.nm.ltxml.core.bez.KreisAbg;
+import de.nm.ltxml.core.bez.OrdenAbg;
+import de.nm.ltxml.core.bez.ParFktAbg;
 import de.nm.ltxml.core.bez.ParteiAbg;
+import de.nm.ltxml.core.bez.StaatAbg;
 
 @XmlRootElement(name="baylandtag")
 public class BayLandtag {
@@ -85,5 +89,17 @@ public class BayLandtag {
 
     public void add(ParteiAbg pabg) {
         this.parteiabg.add(pabg);
+    }
+
+    public void add(KreisAbg krbg) {
+    }
+
+    public void add(ParFktAbg pfbg) {
+    }
+
+    public void add(StaatAbg stbg) {
+    }
+
+    public void add(OrdenAbg orbg) {
     }
 }

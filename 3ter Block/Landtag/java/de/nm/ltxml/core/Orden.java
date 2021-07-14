@@ -18,4 +18,8 @@ public class Orden extends Bezeichnung {
                    .append(", bezeichnung=" + super.bezeichnung)
                    .toString();
     }
+
+    public Object getSetOrdenAbg() {
+        return null;
+    }
 }

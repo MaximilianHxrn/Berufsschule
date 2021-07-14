@@ -17,4 +17,8 @@ public class ParFkt extends Bezeichnung {
                    .append(", bezeichnung=" + super.bezeichnung)
                    .toString();
     }
+
+    public Object getSetParFktAbg() {
+        return null;
+    }
 }

@@ -52,6 +52,7 @@ public class Bsp06 {
 	}
 
 	/** MapElements */
+	@SuppressWarnings("unused")
 	public static class MapElements {
 		@XmlAttribute
 		public String key;

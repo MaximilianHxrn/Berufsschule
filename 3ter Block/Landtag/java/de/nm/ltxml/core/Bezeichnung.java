@@ -12,7 +12,7 @@ public abstract class Bezeichnung extends Base {
         this.bezeichnung = "??";    
     }
 
-    Bezeichnung(String id) {
+    protected Bezeichnung(String id) {
         super();
         super.id = id;
         this.bezeichnung = "??";

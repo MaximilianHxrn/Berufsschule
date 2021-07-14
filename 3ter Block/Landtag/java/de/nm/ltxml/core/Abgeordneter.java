@@ -1,8 +1,15 @@
 package de.nm.ltxml.core;
 
 import java.util.Date;
+import java.util.HashSet;
 
 import javax.xml.bind.annotation.XmlAttribute;
+
+import de.nm.ltxml.core.bez.KreisAbg;
+import de.nm.ltxml.core.bez.OrdenAbg;
+import de.nm.ltxml.core.bez.ParFktAbg;
+import de.nm.ltxml.core.bez.ParteiAbg;
+import de.nm.ltxml.core.bez.StaatAbg;
 
 public class Abgeordneter extends Base {
     String vorname;
@@ -17,11 +24,25 @@ public class Abgeordneter extends Base {
     Familienstand fam;
     Konfession konf;
     byte[] bild;
+    HashSet<ParteiAbg> parteiAbgs;
+    HashSet<KreisAbg> kreisAbgs;
+    HashSet<StaatAbg> staatAbgs;
+    HashSet<ParFktAbg> parFktAbgs;
+    HashSet<OrdenAbg> ordenAbgs;
 
     Abgeordneter() {
         super();
         this.vorname = "??";
         this.name = "??";
+        this.titel = "??";
+        this.beruf = "??";
+        this.gebin = "??";
+        this.gesin = "??";
+        this.parteiAbgs = new HashSet<ParteiAbg>();
+        this.kreisAbgs = new HashSet<KreisAbg>();
+        this.staatAbgs = new HashSet<StaatAbg>();
+        this.parFktAbgs = new HashSet<ParFktAbg>();
+        this.ordenAbgs = new HashSet<OrdenAbg>();
     }
 
     public Abgeordneter(String id, String name, String vorname) {
@@ -29,6 +50,15 @@ public class Abgeordneter extends Base {
         super.id = id;
         this.vorname = vorname;
         this.name = name;
+        this.titel = "??";
+        this.beruf = "??";
+        this.gebin = "??";
+        this.gesin = "??";
+        this.parteiAbgs = new HashSet<ParteiAbg>();
+        this.kreisAbgs = new HashSet<KreisAbg>();
+        this.staatAbgs = new HashSet<StaatAbg>();
+        this.parFktAbgs = new HashSet<ParFktAbg>();
+        this.ordenAbgs = new HashSet<OrdenAbg>();
     }
 
     String getName() {
@@ -111,8 +141,8 @@ public class Abgeordneter extends Base {
         this.konf = konf;
     }
 
-    public Object getSetParteiAbg() {
-        return null;
+    public HashSet<ParteiAbg> getSetParteiAbg() {
+        return parteiAbgs;
     }
 
     public void setBild(byte[] bild) {
@@ -121,5 +151,21 @@ public class Abgeordneter extends Base {
 
     public byte[] getBild() {
         return bild;
+    }
+
+    public HashSet<KreisAbg> getSetKreisAbg() {
+        return kreisAbgs;
+    }
+
+    public HashSet<ParFktAbg> getSetParFktAbg() {
+        return parFktAbgs;
+    }
+
+    public HashSet<StaatAbg> getSetStaatAbg() {
+        return staatAbgs;
+    }
+
+    public HashSet<OrdenAbg> getSetOrdenAbg() {
+        return ordenAbgs;
     }
 }

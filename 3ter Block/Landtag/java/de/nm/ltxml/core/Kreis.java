@@ -34,4 +34,8 @@ public class Kreis extends Bezeichnung {
                    .append(", bezeichnung=" + super.bezeichnung)
                    .toString();
     }
+
+    public Object getSetKreisAbg() {
+        return null;
+    }
 }

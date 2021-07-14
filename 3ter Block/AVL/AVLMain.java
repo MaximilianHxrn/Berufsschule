@@ -3,7 +3,7 @@ import java.io.IOException;
 public class AVLMain{
 
 	public static void main(String[] args) throws IOException {
-		AVLBaum<Integer> test01 = new AVLBaum<Integer>();
+	/*	AVLBaum<Integer> test01 = new AVLBaum<Integer>();
 		test01.add(10);
 		test01.add(5);
 		test01.add(4);
@@ -65,6 +65,14 @@ public class AVLMain{
 		test06.add("Nov");
 		test06.add("Dez");
 		test06.printDotFile("Jahreszeiten");
+*/
+		AVLBaum<Integer> eigenerTest = new AVLBaum<>();
+		eigenerTest.add(5);
+		eigenerTest.add(4);
+		eigenerTest.add(10);
+		eigenerTest.add(15);
+		eigenerTest.add(20);
+		eigenerTest.printDotFile("eigen");
 		
 	}
 }
