@@ -142,6 +142,27 @@ select
 from BLMannschaft, 
 (select @CurRow := 0) as temp;
 
+
+delimiter //
+create procedure Spielstand()
+BEGIN
+select 
+    (@CurRow := @CurRow + 1) as Rang, 
+    MannschName as Mannschaft, 
+    (select Count(Spieltag) from Spiel 
+        where(SP_ID in 
+            (select SP_ID from ZT_SPiel_Mannschaft 
+                where(M_ID=BLMannschaft.M_ID)))) as Spiele, 
+    (select Sum(TorDiff(SP_ID, M_ID)) from ZT_Spiel_Mannschaft 
+        where(M_ID=BLMannschaft.M_ID)) as Tore, 
+    (select Sum(Punkte) from ZT_Spiel_Mannschaft 
+        where(M_ID=BLMannschaft.M_ID)) as Punkte 
+from BLMannschaft, 
+(select @CurRow := 0) as temp;
+end;//
+delimiter ;
+
+
 select (@CurRow := @CurRow + 1) as Rang, MannschName as Mannschaft, (select Count(Spieltag) from Spiel where(SP_ID in (select SP_ID from ZT_SPiel_Mannschaft where(M_ID=BLMannschaft.M_ID)))) as Spiele, (select Sum(TorDiff(SP_ID, M_ID)) from ZT_Spiel_Mannschaft where(M_ID=BLMannschaft.M_ID)) as Tore, (select Sum(Punkte) from ZT_Spiel_Mannschaft where(M_ID=BLMannschaft.M_ID)) as Punkte from BLMannschaft, (select @CurRow := 0) as temp;
 
 -- Seite 58 Aufg 8:
