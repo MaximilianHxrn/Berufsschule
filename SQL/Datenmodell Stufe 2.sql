@@ -5,16 +5,25 @@ SELECT S_ID, M_ID, Name, Vorname, Geschlecht, Gehalt_Monatl from Spieler;
 SELECT Name, Vorname, GebDat  from Spieler ORDER BY Name ASC;
 
 -- Seite 85 Aufg 3:
-SELECT Name, Vorname und GebDat -- TODO Join von Column
+SELECT CONCAT(Spieler.Vorname, " ", Spieler.Name) as Name, GebDat from SPieler order by Name;
 
 -- Seite 85 Aufg 4:
-
+select length(Spieler.Name) from Spieler;
 
 -- Seite 85 Aufg 5:
-SELECT * from Ort where(PLZ like '8*');
+SELECT * from Ort where(PLZ like '8%');
 
 -- Seite 85 Aufg 6:
-SELECT * from Ort where(Bezeichnung like 'K*|L*|M*|N*') ORDER BY Name DESC;
+SELECT * from Ort where(Ort like "M%" or Ort like "L%" or Ort like "N%" or Ort like "K%") ORDER BY Ort DESC; 
+
+-- Seite 85 Aufg 7:
+select Name, Vorname, Gehalt_Monatl from Spieler where(gehalt_monatl> 600000);
+
+-- Seite 85 Aufg 8:
+select Name, Vorname, Ruecken_nr from spieler where(ruecken_nr=1);
+
+-- Seite 85 Aufg 9:
+select Name from Mannschaft where(MannschName like "FC%");
 
 -- Seite 86 Aufg 1:
 SELECT COUNT(*) as Anzahl from Verein;
@@ -188,16 +197,6 @@ from Spiel s;
 
 
 -- Game Spielstand
-select 
-    (@CurRow := @CurRow + 1) as Rang,
-    id as ID, 
-    Name, 
-    (select Count(*) from Game 
-        where(Sieger=Punktestand.id)) 
-        as Punkte from Punktestand , 
-    (select @CurRow := 0) as temp;
-
-
 delimiter //
 create procedure Spielstand()
 BEGIN
@@ -215,7 +214,7 @@ delimiter ;
 Delimiter //
 CREATE procedure Aktuell ()
     begin
-        select * from game order by id desc limit 1;
+        select * from game where(Sieger is null) order by id desc limit 1;
     END;//
 Delimiter ;
 
@@ -230,7 +229,7 @@ Delimiter ;
 Delimiter //
 CREATE procedure Sieger (newsieger int)
     begin
-        update game set sieger=newsieger where (id=(select id from (select * from baum.game) as sth order by id desc limit 1));
+        update game set sieger=newsieger, Endzeit=now() where (id=(select id from (select * from baum.game) as sth order by id desc limit 1));
     END;//
 Delimiter ;
 
