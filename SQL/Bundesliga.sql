@@ -76,18 +76,18 @@ from BLMannschaft,
 -- Seite 92 Aufg 3:
 -- Tor Differenz für Mannschaft ausrechnen
 Delimiter //
-CREATE function TorDiff (id int, ma_id INT)
+create function TorDiff (id int, ma_id int)
     returns int
     Deterministic
     begin
         Declare temp1 int;
         Declare temp2 int;
         Select Tore into temp1 from ZT_Spiel_Mannschaft 
-            where(SP_ID=id AND M_ID=ma_id);
+            where(SP_ID=id and M_ID=ma_id);
         Select Tore into temp2 from ZT_Spiel_Mannschaft 
-            where(SP_ID=id AND M_ID <> ma_id);
+            where(SP_ID=id and M_ID <> ma_id);
         return temp1 - temp2;
-    END;//
+    end;//
 Delimiter ;
 
 -- Endergebnis

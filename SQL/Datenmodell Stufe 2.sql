@@ -56,7 +56,7 @@ Select * from Verein where (GF_ID=1);
 select MannschName from Mannschaft where(M_ID in (select M_ID from ZT_Spiel_Mannschaft where(Heimmannschaft=1 AND SP_ID in (Select SP_ID from Spiel where(Ergebnis="2:1")))));
 
 -- Seite 88 Aufg 1:
-select Mannschaft.MannschName, Count(S_ID) as Anzahl from Spieler left join Mannschaft on Spieler.M_ID = Mannschaft.M_ID group by MannschName;
+select Mannschaft.MannschName, Count(S_ID) as Anzahl from Spieler left join Mannschaft on Spieler.M_ID = Mannschaft.M_ID order by MannschName group by MannschName;
 
 -- Seite 88 Aufg 2:
 select Mannschaft.MannschName, Count(S_ID) as Anzahl from Spieler left join Mannschaft on Spieler.M_ID = Mannschaft.M_ID where(NAT="BRA") group by MannschName;
@@ -233,10 +233,21 @@ CREATE procedure Sieger (newsieger int)
     END;//
 Delimiter ;
 
+Delimiter //
+CREATE procedure Letzte ()
+    begin
+        select * from game order by id desc limit 1;
+    END;//
+Delimiter ;
+
+-- Spieler hinzufügen
+alter table game add column <Neuer Spieler> int after <Letzter Spieler>;
+
 Spielstand();
 Aktuell();
-NewGame(,,,,);
+NewGame(,,,,,);
 Sieger(id);
+Letzte();
 
 select Name, 
     (select Avg((floor(
@@ -246,3 +257,25 @@ select Name,
     as "Alter" 
 from Mannschaft 
 where(V_ID=v.V_ID) from Verein v;
+
+
+select 
+    * 
+from (select 
+        l.beschreibung, 
+        m.mannschname, 
+        count(s.M_id) as Anzahl 
+    from mannschaft m 
+    inner join spieler s on m.m_id = s.M_id 
+    inner join liga l on l.l_id = m.l_id 
+    group by m.m_id 
+    order by Anzahl desc) x 
+where(x.Anzahl = 
+    (select 
+        count(y.m_id) 
+    from spieler y 
+    group by y.m_id 
+    order by y.m_id desc 
+    limit 1));
+
+select * from Spieler where(gehalt_monatl < (select Avg(gehalt_monatl) from spieler));
