@@ -220,9 +220,9 @@ Delimiter ;
 
 -- Game Neue Einträge
 Delimiter //
-CREATE procedure NewGame (newmax int, newphilipp int, newrobert int, newmatthias int, newmarkus int)
+CREATE procedure NewGame (newmax int, newphilipp int, newrobert int, newmatthias int, newmarkus int, newnoah int)
     begin
-        insert into game(id, max,philipp,robert,matthias,markus) values(((select id from (select * from baum.game) as sth order by id desc limit 1) + 1),newmax,newphilipp,newrobert,newmatthias,newmarkus);
+        insert into game(id, max,philipp,robert,matthias,markus, Noah) values(((select id from (select * from baum.game) as sth order by id desc limit 1) + 1),newmax,newphilipp,newrobert,newmatthias,newmarkus, newnoah);
     END;//
 Delimiter ;
 
@@ -279,3 +279,127 @@ where(x.Anzahl =
     limit 1));
 
 select * from Spieler where(gehalt_monatl < (select Avg(gehalt_monatl) from spieler));
+
+
+
+
+
+
+
+
+-- ______________________________________________________
+
+create table Log_Ort(
+    id int not null auto_increment primary key, 
+    ort_id int, 
+    user_id varchar(100), 
+    time_stamp timestamp);
+
+create trigger OnAfterInsertOrt 
+after insert on Ort 
+for each row 
+insert into Log_Ort(ort_id, user_id, time_stamp, Inserted) 
+            values((select o_id from ort 
+                        order by o_id desc 
+                        limit 1), 
+                    current_user(), 
+                    now(),
+                    true);
+
+-- ________________________________________________
+
+create table Log_Spieler(
+    id int not null auto_increment primary key, 
+    s_id int, 
+    user_id varchar(100), 
+    time_stamp timestamp);
+
+create trigger OnAfterInsertSpieler
+after insert on Spieler 
+for each row 
+insert into Log_Spieler(s_id, user_id, time_stamp, Inserted) 
+            values((select s_id from spieler
+                        order by s_id desc 
+                        limit 1), 
+                    current_user(), 
+                    now(),
+                    true);
+
+-- ___________________________________________________
+
+create table Log_Mannschaft(
+    id int not null auto_increment primary key, 
+    m_id int, 
+    user_id varchar(100), 
+    time_stamp timestamp);
+
+create trigger OnAfterInsertMannschaft
+after insert on Mannschaft 
+for each row 
+insert into Log_Mannschaft(m_id, user_id, time_stamp, Inserted) 
+            values((select m_id from Mannschaft
+                        order by m_id desc 
+                        limit 1), 
+                    current_user(), 
+                    now(),
+                    true);
+
+-- ____________________________________________________
+
+alter table Log_Mannschaft add column Inserted boolean;
+alter table Log_Spieler add column Inserted boolean;
+alter table Log_Ort add column Inserted boolean;
+
+
+create trigger OnAfterUpdateOrt 
+after update on Ort
+for each row
+insert into Log_Ort(ort_id, user_id, time_stamp, Inserted) 
+            values(new.o_id, 
+                    current_user(), 
+                    now(),
+                    false);
+
+create trigger OnAfterUpdateSpieler
+after update on Spieler
+for each row
+insert into Log_Spieler(s_id, user_id, time_stamp, Inserted) 
+            values(new.s_id, 
+                    current_user(), 
+                    now(),
+                    false);
+
+create trigger OnAfterUpdateMannschaft 
+after update on Mannschaft
+for each row
+insert into Log_Mannschaft(m_id, user_id, time_stamp, Inserted) 
+            values(new.m_id, 
+                    current_user(), 
+                    now(),
+                    false);
+
+-- ________________________________________________________
+
+insert into Mannschaft values(999, "FC Max", 1, 1, 1);
+select * from Log_Mannschaft;
+
+
+insert into Spieler values(999, 1, "Horn", "Maximilian", 2, "2000-09-03", "maennlich", "GER", 0);
+select * from Log_Spieler;
+
+
+insert into ort values(37, 888888, "Hallo");
+select * from Log_Ort;
+
+-- ________________________________________________________
+
+update Mannschaft set MannschName="FC Max1" where m_id=999;
+select * from Log_Mannschaft order by id desc limit 1;
+
+
+update Spieler set name="Horn1" where m_id=999; 
+select * from Log_Spieler order by id desc limit 1;
+
+
+update Ort set Ort="Mueenchen" where id=37;
+select * from Log_Ort order by id desc limit 1;
